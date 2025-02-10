@@ -1,0 +1,89 @@
+<html>
+<body>
+
+<h1>Exam Entry Form</h1>
+<form name="ExamEntry" method="post" >
+<table width="50%" border="0">
+  <tr>
+     <td id="name">Name</td>
+     <td><input type="text" name="name" /></td>
+   </tr>
+   <tr>
+     <td id="subject">Subject</td>
+     <td><input type="text" name="subject" /></td>
+  </tr>
+  <tr>
+     <td id="examinationNumber">Examination number</td>
+     <td><input type="text" name="examinationNumber" pattern="\d*" maxlength="4"> </td>
+  </tr>
+  <tr>
+	 <td><input type="radio" name="Level" value="GCSELevel" />GCSE level</td>
+  </tr>
+  <tr>
+	 <td><input type="radio" name="Level" value="ASLevel" />AS level</td>
+  </tr>
+  <tr>
+	 <td><input type="radio" name="Level" value="Alevel" />A level</td>
+  </tr>
+     
+<tr>
+   <td><input type="submit" name="Submit" value="Submit" 
+   onclick="return validateForm();" /></td>
+   <td><input type="reset" name="Reset" value="Reset" />
+   </td>
+</tr>
+
+ 
+</table>
+</form>
+
+</body>
+
+<head>
+<script>
+
+function validateForm() {
+	var result = true;
+	var msg="";
+	
+	if (document.ExamEntry.name.value=="") {
+	   msg+="You must enter your name \n";
+	   document.ExamEntry.name.focus();
+	   document.getElementById('name').style.color="red";
+	   result = false;
+	}
+	if(document.ExamEntry.subject.value=="") {
+	   msg+="You must enter the subject \n";
+	   document.ExamEntry.subject.focus();
+	   document.getElementById('subject').style.color="red"
+	   result = false;
+	}
+	if(document.ExamEntry.examinationNumber.value=="") {
+	   msg+="You must enter the examination number \n";
+	   document.ExamEntry.examinationNumber.focus();
+	   document.getElementById('examinationNumber').style.color="red"
+	   result = false;
+	}
+	   	   
+	if(document.ExamEntry.examinationNumber.value.length != 4) {
+    msg += "The examination number has to be four digits \n";
+    document.ExamEntry.examinationNumber.focus();
+    document.getElementById('examinationNumber').style.color = "red";
+    result = false;
+    }
+	
+	
+	if (msg==""){
+	return result;
+	}
+	
+	{
+	alert(msg)
+	return result;
+	}
+}
+
+
+</script>
+</head>
+</html>
